@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title style="color: #10b981;">Sadanand Gupta | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            background-image: url("solid/img/bg-3.pngs");
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 600px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .profile-bio {
+            font-size: 1rem;
+            color: #4a5568;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+        
+        .links {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 1rem;
+        }
+        
+        .link {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            position: relative;
+            color: white;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.5s ease forwards;
+        }
+        
+        .link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: width 0.3s ease;
+        }
+        
+        .link:hover::after {
+            width: 100%;
+        }
+        
+        .link i {
+            font-size: 1.2rem;
+            margin-right: 0.75rem;
+        }
+        
+        .link-content {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .portfolio-link {
+            background-color: #10b981;
+        }
+        
+        .github-link {
+            background-color: #1e293b;
+        }
+        
+        .linkedin-link {
+            background-color: #2563eb;
+        }
+        
+        .email-link {
+            background-color: #9333ea;
+        }
+        
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            color: #6b7280;
+            text-align: center;
+            width: 100%;
+            padding: 1rem 0;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Animation delays for links */
+        .link:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        
+        .link:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        
+        .link:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        
+        .link:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .profile-name {
+                font-size: 1.5rem;
+            }
+            
+            .profile-bio {
+                font-size: 0.875rem;
+            }
+            
+            .profile-image {
+                width: 100px;
+                height: 100px;
+            }
+        }
+        
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #111827;
+                color: #f3f4f6;
+            }
+            
+            .profile-name {
+                color: #f3f4f6;
+            }
+            
+            .profile-bio {
+                color: #d1d5db;
+            }
+            
+            .footer {
+                color: #9ca3af;
+            }
+        }
+        
+        /* Skill tags styling */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+        
+        .skill-tag {
+            background-color: rgba(236, 19, 19, 0.05);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #3fe611;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            .skill-tag {
+                background-color: rgba(255, 255, 255, 0.1);
+                color: #d1d5db;
+            }
+            
+            .skill-tag:hover {
+                background-color: rgba(255, 255, 255, 0.15);
+            }
+        }
+
+        /* Background video styles */
+#bgVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Ensures video covers the entire background */
+    z-index: -1; /* Sends video behind the content */
+}
+
+/* Content styles */
+.content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #fff;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.5); /* Optional: adds a semi-transparent overlay for readability */
+    border-radius: 10px;
+}
+
+    </style>
+</head>
+<body>
+
+    <video autoplay muted loop id="bgVideo">
+        <source src="vecteezy_network-connections-technology-digital-cyberspace-and_52182020.mov" type="video/mp4" />
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="container">
+        <div class="profile">
+            <div class="profile-image">
+                <img src="https://media.licdn.com/dms/image/v2/D5603AQFGHbSNMcOerQ/profile-displayphoto-shrink_400_400/B56ZV0WdGuGoAg-/0/1741413798996?e=1747872000&v=beta&t=wPJVzFeocgM_bQt1XrkWghcK6DiEuG3w0tWdy8yKRNo" alt="Sadanand Gupta">
+            </div>
+            <h1 class="profile-name">Sadanand Gupta</h1>
+        </div>
+        
+        <div class="skills">
+            <span class="skill-tag">Software Developer</span>
+            <span class="skill-tag">Flutter Developer</span>
+            <span class="skill-tag">Full-Stack Developer</span>
+            <span class="skill-tag">Web Developer</span>
+            <span class="skill-tag">UX/UI Design</span>
+            <span class="skill-tag">Rotaracter</span>
+            <span class="skill-tag">Multilingual</span>
+        </div>
+        
+        <div class="links">
+            <a href="https://sadanand-gupta.github.io/portfolio/" class="link portfolio-link">
+                <div class="link-content">
+                    <i class="fas fa-globe"></i>
+                    <span>Visit my Portfolio</span>
+                </div>
+            </a>
+            
+            <a href="https://github.com/sadanand-gupta" class="link github-link">
+                <div class="link-content">
+                    <i class="fab fa-github"></i>
+                    <span>Check my Github</span>
+                </div>
+            </a>
+            
+            <a href="https://www.linkedin.com/in/sadanandgupta/" class="link linkedin-link">
+                <div class="link-content">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span>Connect on LinkedIn</span>
+                </div>
+            </a>
+            
+            <a href="mailto:sadanandguptat@gmail.com" class="link email-link">
+                <div class="link-content">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email me</span>
+                </div>
+            </a>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 All rights reserved.</p>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover animation to profile image
+            const profileImage = document.querySelector('.profile-image');
+            profileImage.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05) rotate(5deg)';
+            });
+            
+            profileImage.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+            
+            // Add pulse animation to links on page load
+            const links = document.querySelectorAll('.link');
+            
+            // Function to add ripple effect on click
+            function createRipple(event) {
+                const button = event.currentTarget;
+                
+                const circle = document.createElement('span');
+                const diameter = Math.max(button.clientWidth, button.clientHeight);
+                const radius = diameter / 2;
+                
+                circle.style.width = circle.style.height = `${diameter}px`;
+                circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+                circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+                circle.classList.add('ripple');
+                
+                const ripple = button.getElementsByClassName('ripple')[0];
+                
+                if (ripple) {
+                    ripple.remove();
+                }
+                
+                button.appendChild(circle);
+            }
+            
+            // Add ripple effect to all links
+            links.forEach(function(link) {
+                link.addEventListener('click', createRipple);
+            });
+            
+            // Random skill tag animations
+            const skillTags = document.querySelectorAll('.skill-tag');
+            skillTags.forEach((tag, index) => {
+                setTimeout(() => {
+                    tag.style.opacity = '0';
+                    tag.style.transform = 'translateY(-10px)';
+                    setTimeout(() => {
+                        tag.style.transition = 'all 0.5s ease';
+                        tag.style.opacity = '1';
+                        tag.style.transform = 'translateY(0)';
+                    }, 100);
+                }, 1000 + (index * 100));
+            });
+        });
+    </script>
+</body>
+</html>
